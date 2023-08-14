@@ -53,6 +53,8 @@ nfcs_design <-
 		satisfaction_w_finances =
 			ifelse( j1 > 10 , NA , j1 ) ,
 			
+		risk_taking =
+			ifelse( j2 > 10 , NA , j2 ) ,
 		
 		difficult_to_pay_bills =
 			factor(
@@ -114,8 +116,8 @@ svyby(
 	ci = TRUE , na.rm = TRUE
 )
 svyratio( 
-	numerator = ~ nummen , 
-	denominator = ~ numadult , 
+	numerator = ~ satisfaction_w_finances , 
+	denominator = ~ risk_taking , 
 	nfcs_design ,
 	na.rm = TRUE
 )
