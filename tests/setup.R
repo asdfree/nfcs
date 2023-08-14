@@ -162,20 +162,9 @@ glm_result <-
 	)
 
 summary( glm_result )
-
-# match https://finrafoundation.org/sites/finrafoundation/files/NFCS-Report-Fifth-Edition-July-2022.pdf#page=4
-# The fifth and latest wave of the NFCS was fielded from June to October 2021 (N=27,118), providing a view of
-# financial capability during the COVID-19 pandemic. This unusual context is important to bear in mind while
-# interpreting the study’s findings.
-
 stopifnot( nrow( nfcs_df ) == 27118 )
-
-# match 53% have three months of rainy day funds from
-# https://finrafoundation.org/sites/finrafoundation/files/NFCS-Report-Fifth-Edition-July-2022.pdf#page=7
 national_rainy_day <- svymean( ~ rainy_day_fund , nfcs_design )
 stopifnot( round( coef( national_rainy_day )[ 'rainy_day_fundYes' ] , 2 ) == 0.53 )
-
-# match unweighted counts from https://cdn.finra.org/nfcs/2021/geography.html
 state_counts <-
 	svyby(
 		~ one ,
@@ -188,7 +177,6 @@ stopifnot( state_counts[ 'California' , 'counts' ] == 1252 )
 stopifnot( state_counts[ 'Missouri' , 'counts' ] == 501 )
 stopifnot( state_counts[ 'Oregon' , 'counts' ] == 1261 )
 
-# match weighted rainy day estimates from https://cdn.finra.org/nfcs/2021/geography.html
 state_rainy_day <-
 	svyby(
 		~ rainy_day_fund ,
@@ -200,7 +188,6 @@ state_rainy_day <-
 stopifnot( round( state_rainy_day[ 'California' , 'rainy_day_fundYes' ] , 2 ) == 0.57 )
 stopifnot( round( state_rainy_day[ 'Missouri' , 'rainy_day_fundYes' ] , 2 ) == 0.51 )
 stopifnot( round( state_rainy_day[ 'Oregon' , 'rainy_day_fundYes' ] , 2 ) == 0.52 )
-
 library(srvyr)
 nfcs_srvyr_design <- as_survey( nfcs_design )
 nfcs_srvyr_design %>%
