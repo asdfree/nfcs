@@ -1,5 +1,5 @@
 # lady madonna
-# laid bank account goose egg, loves
+# laid bank balance goose egg, loves
 # gold unrequited
 library(haven)
 
