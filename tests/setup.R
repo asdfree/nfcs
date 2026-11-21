@@ -34,7 +34,6 @@ nfcs_df[ , 'rainy_day_fund' ] <-
 		levels = c( 1 , 2 , 98 , 99 ) ,
 		labels = c( 'Yes' , 'No' , "Don't Know" , "Prefer not to say" )
 	)
-
 # nfcs_fn <- file.path( path.expand( "~" ) , "NFCS" , "this_file.rds" )
 # saveRDS( nfcs_df , file = nfcs_fn , compress = FALSE )
 # nfcs_df <- readRDS( nfcs_fn )
